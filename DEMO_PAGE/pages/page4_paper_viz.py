@@ -18,8 +18,20 @@ def draw_results():
     return fig
 
 def page4_ui():
-    with gr.Column():
-        gr.Markdown("### 📊 논문 실험 결과 시각화")
-        btn = gr.Button("그래프 보기")
-        plot = gr.Plot()
-        btn.click(draw_results, outputs=plot)
+    with gr.Blocks() as demo:
+    with gr.Row():
+        # 오버라이드된 profile_box() 호출 → 내 소개만 보임
+        profile_box()
+
+        with gr.Column(scale=8):
+            gr.Markdown("""
+            # SW.Kim's page
+            """)
+
+            with gr.Tab("1번 논문"):
+                page1_ui()
+            with gr.Tab("2번 논문"):
+                page2_ui()
+            with gr.Tab("3번 논문"):
+                page3_ui()
+
